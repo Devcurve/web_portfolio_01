@@ -236,7 +236,11 @@
     }
 
     .menu_main {
-        display: none;
+        /*display: none;*/
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .logo {

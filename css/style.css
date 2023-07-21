@@ -251,6 +251,7 @@ button {
     font-size: 20px;
     color: #385a64;
     float: left;
+    margin-right: -5px; /* 원하는 간격에 따라 조정 */
 }
 
 .menu_main li a {
@@ -357,7 +358,7 @@ menu_text {
     font-size: 60px;
     color: #fef6fc;
     font-weight: bold;
-    line-height: 50px;
+    line-height: 70px;
     padding-top: 30px;
 }
 
