@@ -1,47 +1,72 @@
 <!DOCTYPE html>
-<html>
-<html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
-</head>
-<body>
-<div class="container">
-  <form class="login-form" action="/login" method="post">
-    <h2>Login</h2>
-    <input type="email" name="email" placeholder="Email" required>
-    <input type="password" name="password" placeholder="Password" required>
-    <button type="submit">Log in</button>
+  <html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+  </head>
+  <body>
+  <!--div class="container">
+    <form class="signupForm" method="post">
+      <h2>Login</h2>
+
+      <input type="email" name="email" placeholder="Email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Log in</button>
+    </form>
+  </div-->
+
+  <h2>Login</h2>
+  <form id="signupForm">
+    <!-- 사용자 이름을 입력받는 필드 -->
+    <label for="username">이름:</label><br>
+    <input type="text" id="username" name="username"><br>
+    <!-- 비밀번호를 입력받는 필드. 'password' 타입이므로 입력 내용이 별표(*)로 표시됩니다. -->
+    <label for="password">비밀번호:</label><br>
+    <input type="password" id="password" name="password"><br>
+    <!-- 회원가입 버튼. 클릭하면 폼이 제출됩니다. -->
+    <input type="submit" value="회원가입">
   </form>
-</div>
 
 
-<script>
-  document.getElementById('login-form').addEventListener('submit', function(event) {
-    event.preventDefault();
+  <script>
+    // JavaScript 코드 시작
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
 
-    fetch('https://port-0-java-springboot-cu6q2blkaksrr9.sel4.cloudtype.app/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-            .then(response => response.json())
-            .then(data => console.log(data))
-            .catch((error) => {
-              console.error('Error:', error);
-            });
-  });
-</script>
+    // 'signupForm' id를 가진 폼의 'submit' 이벤트에 이벤트 리스너를 추가합니다.
+    // 이 폼이 제출되면 아래의 함수가 호출됩니다.
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+      // 기본 제출 동작을 막습니다. 이렇게 하지 않으면 페이지가 새로고침됩니다.
+      event.preventDefault();
 
-</body>
+      // 사용자가 입력한 사용자 이름과 비밀번호를 가져옵니다.
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // 가져온 사용자 이름과 비밀번호를 객체에 담습니다.
+      var data = { username: username, password: password };
+
+      // fetch 함수를 사용하여 백엔드에 회원가입 요청을 보냅니다.
+      // 이 요청은 POST 메서드를 사용하고, 본문에는 사용자 이름과 비밀번호가 JSON 형식으로 담겨 있습니다.
+      //fetch('https://port-0-java-springboot-signup-cu6q2blkawvrek.sel4.cloudtype.app/signup', {
+        fetch('http://localhost:8080/signup', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Response:', data);
+          alert(data.message);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      });
+  </script>
+
+  </body>
 </html>
 
 
