@@ -1,5 +1,5 @@
-프론트앤드
+프론트
 https://app.netlify.com/
 
-백엔드
+백
 https://app.cloudtype.io/
