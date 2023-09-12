@@ -29,8 +29,39 @@
       <link rel="stylesheet" href="css/owl.carousel.min.css">
       <link rel="stylesheet" href="css/owl.theme.default.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
+
+      <style>
+         .weather {
+            position: fixed;
+            top: 50%;
+            left: 20px; /* 좌측 여백 조정 */
+            transform: translateY(-50%);
+         }
+
+         @media screen and (max-width: 768px) {
+            .weather {
+               position: static;
+               transform: none;
+               text-align: center;
+               margin-top: 20px; /* 필요에 따라 조정하세요 */
+               margin-bottom: 20px; /* 필요에 따라 조정하세요 */
+               left: auto; /* 모바일에서 좌측 정렬을 해제하기 위해 추가 */
+               right: auto; /* 모바일에서 우측 정렬을 해제하기 위해 추가 */
+            }
+         }
+         </style>
+
    </head>
    <body>
+   <!-- Weather widget by https://meteodays.com -->
+   <div class="weather">
+      <a id="ms-informer-link-a82ee8d455d3c02747013934056440ba" class="ms-informer-link" href="https://meteodays.com/ko/weather/overview/seoul">서울날씨</a>
+      <script class="ms-informer-script" src="https://meteodays.com/ko/informer/script/a82ee8d455d3c02747013934056440ba"></script>
+   </div>
+   <!-- End -->
+
+
       <!--header section start -->
       <div class="header_section">
          <div class="container-fluid">
